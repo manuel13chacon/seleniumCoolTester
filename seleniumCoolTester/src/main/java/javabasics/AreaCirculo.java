@@ -13,6 +13,8 @@ public class AreaCirculo {
 		double area = Math.PI*Math.pow(radio, 2);
 		
 		System.out.println("El area del circulo es : "+ area);
+		
+		// otro comentario
 
 	}
 
