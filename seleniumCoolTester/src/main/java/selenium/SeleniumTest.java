@@ -1,6 +1,7 @@
 package selenium;
 
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -50,19 +51,34 @@ public class SeleniumTest {
 		WebElement userNameByName = driver.findElement(By.name("txtUsername"));
 		WebElement userNameByXpath = driver.findElement(By.xpath("//div[@id='divUsername']/input"));
 		
+		WebElement userNameByCssSelector = driver.findElement(By.cssSelector("input[name='txtUsername']"));
+		
+		//List<WebElement> listUsernameTag = driver.findElements(By.tagName("//input"));
+		List<WebElement> listofInputs = driver.findElements(By.tagName("input"));
+		
 		// Locators para el campo PassWord
 		WebElement txtPasswordById = driver.findElement(By.id("txtPassword"));
 		WebElement txtPasswordByXpath = driver.findElement(By.xpath("//div[@id='divPassword']/input"));
 		
+		WebElement txtPasswordByCssSelector = driver.findElement(By.cssSelector("input[name='txtPassword']"));
+		//List<WebElement> listTxtPasswordTag = driver.findElements(By.tagName("//input"));
+		
 		WebElement btnLogin = driver.findElement(By.id("btnLogin"));
 				
-		userNameByXpath.sendKeys("Admin");
-		txtPasswordByXpath.sendKeys("admin123");
+		//userNameByXpath.sendKeys("Admin");
+		//txtPasswordByXpath.sendKeys("admin123");
+		
+		//userNameByCssSelector.sendKeys("Admin");
+		//txtPasswordByCssSelector.sendKeys("admin123");
+		
+		listofInputs.get(5).sendKeys("Admin");
+		//listofInputs.get(5).
+		listofInputs.get(6).sendKeys("admin123");
 		btnLogin.click();
 		
 		
 		try {
-			WebElement linkWelcome = driver.findElement(By.xpath("//a[@id='welome']"));
+			WebElement linkWelcome = driver.findElement(By.xpath("//a[@id='welcome']"));
 
 			if (linkWelcome.getSize()!= null) {
 				System.out.println("Login Exitoso");
@@ -75,10 +91,20 @@ public class SeleniumTest {
 		
 		log.info(" Ejecucion finalizada");
 		
+			
 		//driver.manage().window().maximize();
 				
 		//driver.quit();
+		//driver.close();
+		
+		//System.out.println(numeroRandom());
 
 	}
+	
+//	public static int numeroRandom() {
+//		int numero = (int) Math.random() * 100;
+//
+//		return numero;
+//	}
 
 }
